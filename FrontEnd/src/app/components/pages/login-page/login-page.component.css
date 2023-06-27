@@ -1,0 +1,39 @@
+div.grid {
+    position: relative;
+    left: 100px;
+    width: 50%;
+    margin: auto;
+    height: 100%;
+}
+
+div.p-fluid {
+    padding-top: 50px;
+}
+
+div.field {
+    padding-bottom: 25px;
+}
+
+div.col-2 {
+    position: relative;
+    bottom: 150px;
+}
+
+div.col-5 {
+    padding-right: 60%;
+}
+
+div.signup {
+    position: relative;
+    bottom: 210px;
+    left: 60%;
+}
+
+label.labels{
+    font-weight: bold;
+}
+
+div.error-list {
+    color: red;
+}
+

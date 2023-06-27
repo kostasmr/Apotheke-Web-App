@@ -1,0 +1,50 @@
+<div class="sidenav" style="width:15%">
+    <a href="#" class="link-button1">Τα προιόντα μας</a>
+    <a href="#" class="link-button2">Καλάθι</a>
+    <a href="#" class="link-button3">Παραλαβές</a>
+</div>
+
+<div style="margin-left:15%">
+    <p-table [value]="products" [tableStyle]="{ 'width': '100%' }">
+        <ng-template pTemplate="caption"  >
+            <p-toolbar>
+                <div class="flex align-items-center justify-content-between">
+                    <b>PRODUCTS</b>
+                </div>
+                <div class="p-toolbar-group-start">
+                    <p-button icon="pi pi-plus"></p-button>   
+                </div>
+                <div class="p-toolbar-group-end">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search" (click)="search(s.value)"></i>
+                        <input #s type="text" placeholder="Search Product" pInputText (keyup.enter)="search(s.value)" [value]="searchTerm"/>
+                    </span>
+                </div>
+            </p-toolbar>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Supplier</th>
+                <th>Weight</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.supplier }}</td>
+                <td>{{ product.weight }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>
+                    <p-button  label="ADD TO BAG" styleClass="p-button-outlined" (click)="addToBag(product)"></p-button>
+                    <p-button  icon="pi pi-user-edit" styleClass="p-button-outlined p-button-success"  (click)="editClick(product)" ></p-button>
+                    <p-button  icon="pi pi-trash" styleClass="p-button-outlined p-button-danger"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

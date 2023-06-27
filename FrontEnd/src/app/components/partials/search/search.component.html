@@ -1,0 +1,4 @@
+<span class="p-input-icon-left">
+    <i class="pi pi-search" (click)="search(s.value)"></i>
+    <input #s type="text" placeholder="Search Product" pInputText (keyup.enter)="search(s.value)" [value]="searchTerm"/>
+</span>

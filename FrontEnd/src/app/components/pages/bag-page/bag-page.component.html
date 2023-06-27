@@ -1,0 +1,26 @@
+<div class="container">
+    <ul>
+      <li *ngFor="let bagItem of bag.items">
+        <div>
+          <a>
+            Product: {{bagItem.product.name}}
+          </a>
+        </div>
+        <div>
+            <a>
+                Quantity: {{bagItem.product.bagQuantity}}
+            </a>
+        </div>
+        <div>
+          <button class="remove-button" (click)="removeFromBag(bagItem)">
+            Remove
+          </button>
+        </div>
+      </li>
+    </ul>
+
+    <div>
+        <div>Total products: {{bag.totalCount}}</div>
+        <div>Total Quantity of products: {{bag.totalBagQuantity}}</div>
+    </div>
+</div>

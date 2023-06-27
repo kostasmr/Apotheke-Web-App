@@ -31,6 +31,6 @@ export class UserService {
     }));
   }
 
-  private setUser
+  
   
 }
