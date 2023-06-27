@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { BagService } from 'src/app/services/bag.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/shared/models/Product';
+import { User } from 'src/app/shared/models/User';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,10 @@ export class HomeComponent  implements OnInit {
 
   products: Product[] = []
   searchTerm = '';
-  constructor(private productService:ProductService, activatedRoute:ActivatedRoute, private router:Router,private bagService: BagService) {
+  user!:User;
+  constructor(private productService:ProductService, activatedRoute:ActivatedRoute, 
+    private router:Router,private bagService: BagService,
+    private userService:UserService) {
     let productsObservable: Observable<Product[]>;
     activatedRoute.params.subscribe((params) => {
       if(params.searchTerm){
@@ -27,6 +32,10 @@ export class HomeComponent  implements OnInit {
 
       productsObservable.subscribe((serverProducts) => {
         this.products = serverProducts;
+      })
+
+      userService.userObservable.subscribe((newUser) =>{
+        this.user = newUser;
       })
     })
     //productsObservable = productService.getAll();
@@ -50,5 +59,7 @@ export class HomeComponent  implements OnInit {
     throw new Error('Method not implemented.');
   }
     
-
+  get isAuth(){
+    return this.user.token;
+  }
 }

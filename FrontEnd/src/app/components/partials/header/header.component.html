@@ -1,20 +1,21 @@
 <header>
     <div class="container">
-        <a routerLink="/" class="logo">First App</a>
+        <a *ngIf="isAuth" routerLink="/" class="logo">First App</a>
+        <a *ngIf="!isAuth" class="logo">First App</a>
         <nav>
             <ul>
-                <li>
+                <li *ngIf="!isAuth">
                     <a routerLink="/login">Login</a>
                 </li>
-                <li class="menu-container">
-                    <a routerLink="/dashboard">John</a>
+                <li *ngIf="isAuth" class="menu-container">
+                    <a routerLink="/dashboard">{{user.name}}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profile</a>
                         <a routerLink="/orders">Orders</a>
-                        <a routerLink="/logout">Logout</a>
+                        <a (click)="logout()">Logout</a>
                     </div>
                 </li>
-                <li>
+                <li *ngIf="isAuth">
                     <a routerLink="/bag-page">
                         Bag <span >{{bagQuantity}}</span>
                     </a>
