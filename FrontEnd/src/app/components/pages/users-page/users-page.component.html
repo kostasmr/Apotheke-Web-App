@@ -1,0 +1,60 @@
+<p-confirmDialog #cd [style]="{width: '20vw'}" [baseZIndex]="10000" (keyup.enter)="cd.accept()" >
+    <ng-template pTemplate="header">
+        <h3>Delete User</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-times" styleClass="p-button-outlined p-button-secondary" label="No" (click)="cd.reject()"></p-button>
+        <p-button icon="pi pi-check" styleClass="p-button-raised p-button-success" label="Yes" (click)="cd.accept()"></p-button>
+    </ng-template>
+</p-confirmDialog>
+
+<div class="sidenav">
+    <a href="/users-page" class="btn1"><span class="pi pi-users" style="font-size: 30px;"></span> Users</a>
+    <a href="/supplier-page" class="btn2"><span class="pi pi-truck" style="font-size: 30px;"></span> Suppliers</a>
+    <a href="/" class="btn3"><span class="pi pi-box" style="font-size: 30px;"></span> Products</a>
+</div>
+
+<div class="content">
+    <div class="title">USERS</div>
+    <div class="table">
+        <p-messages [value]="msgs"></p-messages>
+        <p-table 
+            [value]="users" 
+            [tableStyle]="{ 'width': '100%' }"
+            [paginator]="true"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            >
+            <ng-template pTemplate="caption"  >
+                <div class="flex" style="margin-left: 82%;">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search" (click)="search(s.value)"></i>
+                        <input #s type="text" placeholder="Search User" pInputText (keyup.enter)="search(s.value)" [value]="searchTerm"/>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 15%;">ID</th>
+                    <th style="width: 15%;">Name</th>
+                    <th style="width: 15%;">Email</th>
+                    <th style="width: 15%;">Admin</th>
+                    <th style="width: 15%;" *ngIf="isAdmin">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td style="height: 60px;">{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.isAdmin }}</td>
+                    <td *ngIf="isAdmin">
+                        <p-button class="btn" icon="pi pi-user-edit" styleClass="p-button-outlined p-button-success" (click)="openEditPrForm(user)" ></p-button>
+                        <p-button class="btn" icon="pi pi-trash" styleClass="p-button-outlined p-button-danger" (click)="confirm(user.id)"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

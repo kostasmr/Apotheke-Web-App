@@ -1,12 +1,14 @@
-<header>
+<header *ngIf="isAuth">
     <div class="container">
-        <a *ngIf="isAuth" routerLink="/" class="logo">First App</a>
-        <a *ngIf="!isAuth" class="logo">First App</a>
+        <a *ngIf="isAuth" routerLink="/" class="logo">Apotheke.</a>
         <nav>
             <ul>
                 <li *ngIf="!isAuth">
                     <a routerLink="/login">Login</a>
                 </li>
+                <div *ngIf="isAdmin" class="admin">
+                    Admin
+                </div>
                 <li *ngIf="isAuth" class="menu-container">
                     <a routerLink="/dashboard">{{user.name}}</a>
                     <div class="menu">
@@ -17,7 +19,7 @@
                 </li>
                 <li *ngIf="isAuth">
                     <a routerLink="/bag-page">
-                        Bag <span >{{bagQuantity}}</span>
+                        Bag <span>{{bagQuantity}}</span>
                     </a>
                 </li>
             </ul>

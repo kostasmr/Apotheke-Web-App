@@ -1,3 +1,5 @@
+import { connect } from "mongoose";
+
 export const sample_products: any[] = [
     {
         id: '1',
@@ -45,5 +47,12 @@ export const sample_users: any[] = [
         email: "gp@gmail.com",
         password: "123456",
         isAdmin: true,
+    },
+];
+
+export const sample_suppliers: any[] = [
+    {
+        name: "Public",
+        code: "pb2023",
     },
 ];

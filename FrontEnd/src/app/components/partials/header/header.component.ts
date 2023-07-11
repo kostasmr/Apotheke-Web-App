@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit{
 
   bagQuantity=0;
   user!:User;
+  
   constructor(bagService: BagService, private userService:UserService,
     private router:Router){ 
     bagService.getBagObservable().subscribe((newBag) =>{
@@ -29,8 +30,12 @@ export class HeaderComponent implements OnInit{
   }
 
   logout(){
-    this.userService.logout();
+    this.userService.logout(this.user.id);
     this.router.navigateByUrl("/login");
+  }
+
+  get isAdmin(){
+    return this.user.isAdmin;
   }
 
   get isAuth(){

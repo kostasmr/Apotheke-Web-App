@@ -1,0 +1,22 @@
+.content{
+    padding-top: 10px;
+  }
+  .row { 
+    display: flex;
+    gap: 10px
+  }
+  
+  .actions{
+    float:right;
+  }
+  
+  .btn1{
+    margin-right: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .btn2{
+    margin-right: 15px;
+    padding-bottom: 10px;
+  
+  }

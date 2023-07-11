@@ -1,36 +1,75 @@
-div.grid {
-    position: relative;
-    left: 100px;
-    width: 50%;
-    margin: auto;
-    height: 100%;
+
+.container{
+    background-image: url("../../../../assets/images/2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 8%;
+    padding-bottom: 16%;
 }
 
-div.p-fluid {
-    padding-top: 50px;
+.grid {
+    position: relative;
+    width: 40%;
+    background: #0000007b;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    margin-left: 30%;
 }
+
+.logo{
+    font-size: 50px;
+    margin-left: 35%;
+    margin-top: 5%;
+    color: rgb(255, 255, 255);
+}
+
+.reset{
+    margin-left: 43%;
+    margin-top: 10%;
+    margin-bottom: 8%;
+}
+.reset a{
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+}
+
+.reset a:hover{
+    color: #b53fff;
+}
+
 
 div.field {
     padding-bottom: 25px;
 }
 
 div.col-2 {
-    position: relative;
-    bottom: 150px;
+    position: fixed;
+    bottom: 50%;
+    margin-left: 24%;
+}
+
+.or{
+    margin-left: 20%;
+    color: rgb(255, 255, 255);
 }
 
 div.col-5 {
-    padding-right: 60%;
+    margin-top: 5%;
+    margin-left: 5%;
+    max-width: 350px;
 }
 
 div.signup {
-    position: relative;
-    bottom: 210px;
-    left: 60%;
+    position: fixed;
+    bottom: 55%;
+    margin-left: 30%;
 }
 
 label.labels{
-    font-weight: bold;
+    font-size: large;
+    font-weight: thin;
+    color: rgb(255, 255, 255);
 }
 
 div.error-list {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { sample_products } from 'src/data';
 import { Product } from '../shared/models/Product';
 import { HttpClient } from '@angular/common/http';
-import { PRODUCTS_BY_SEARCH_URL, PRODUCTS_URL, PRODUCT_BY_ID_URL } from '../shared/constants/urls';
+import { PRODUCTS_BY_SEARCH_URL, PRODUCTS_URL, PRODUCT_BY_ID_URL, PRODUCT_EDIT_PAGE_URL, BASE_URL} from '../shared/constants/urls';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -34,6 +34,28 @@ export class ProductService {
       product.bagQuantity = 0;
     }
 
+  }
+
+  addProduct(data: any): Observable<any> {
+    const product = new Product();
+    product.name = data.name;
+    product.supplier = data.supplier;
+    product.weight = data.weight;
+    product.quantity = data.quantity;
+    product.bagQuantity = 0;
+    return this.http.post(PRODUCT_EDIT_PAGE_URL, product);
+  }
+
+  editProduct(id: any ,data: any): Observable<any> {
+    return this.http.put(`http://localhost:8080/api/products/${id}`, data);
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8080/api/products/${id}`);
+  }
+
+  getProductList(): Observable<any> {
+    return this.http.get(PRODUCTS_URL);
   }
 
 }

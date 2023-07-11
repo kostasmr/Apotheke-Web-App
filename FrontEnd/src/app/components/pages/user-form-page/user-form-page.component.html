@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+    <h1>User Form</h1>
+</div>
+<form [formGroup]="prForm" (ngSubmit)="onFormSubmit()">
+<div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" placeholder="Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label >Password</mat-label>
+            <input matInput type="text" placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" >
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+
+<div mat-dialog-actions class="actions">
+    <p-button class="btn1" label="Cancel" styleClass="p-button-outlined p-button-secondary" [mat-dialog-close]="false"></p-button>
+    <p-button class="btn2" styleClass="p-button-success" type="sumbit">{{data ? 'Update': 'Save'}}</p-button>
+</div>
+</form>

@@ -1,49 +1,30 @@
-<div class="sidenav" style="width:15%">
-    <a href="#" class="link-button1">Τα προιόντα μας</a>
-    <a href="#" class="link-button2">Καλάθι</a>
-    <a href="#" class="link-button3">Παραλαβές</a>
+<div mat-dialog-title>
+    <h1>Product Form</h1>
+</div>
+<form [formGroup]="prForm" (ngSubmit)="onFormSubmit()">
+<div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" placeholder="Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Supplier</mat-label>
+            <input matInput type="text" placeholder="Supplier" formControlName="supplier">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Weight</mat-label>
+            <input matInput type="text" placeholder="Weight" formControlName="weight">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput type="text" placeholder="Quantity" formControlName="quantity">
+        </mat-form-field>
+    </div>
 </div>
 
-<div style="margin-left:15%">
-    <p-table [tableStyle]="{ 'width': '100%' }">
-        <ng-template pTemplate="caption"  >
-            <p-toolbar>
-                <div class="flex align-items-center justify-content-between">
-                    <b>PRODUCTS</b>
-                </div>
-            </p-toolbar>
-        </ng-template>
-        <ng-template pTemplate="header">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Supplier</th>
-                <th>Weight</th>
-                <th>Quantity</th>
-                <th>Actions</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr>
-                <td>ID</td>
-                <td>{{ product.id }}</td>
-`           </tr>
-            <tr>
-                <td>Name</td>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <td>Supplier</td>
-                <td>{{ product.supplier }}</td>
-            </tr>
-            <tr>
-                <td>Weight</td>
-                <td>{{ product.weight }}</td>
-            </tr>
-            <tr>
-                <td>Quantity</td>
-                <td>{{ product.quantity }}</td>
-            </tr>
-        </ng-template>
-    </p-table>
+<div mat-dialog-actions class="actions">
+    <p-button class="btn1" label="Cancel" styleClass="p-button-outlined p-button-secondary" [mat-dialog-close]="false"></p-button>
+    <p-button class="btn2" styleClass="p-button-success" type="sumbit">{{data ? 'Update': 'Add'}}</p-button>
 </div>
+</form>

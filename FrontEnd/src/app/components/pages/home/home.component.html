@@ -2,57 +2,71 @@
     <app-login-page></app-login-page>
 </div>
 
+
+
 <div *ngIf="isAuth">
-
-<div class="sidenav" style="width:15%">
-    <a href="#" class="link-button1">Τα προιόντα μας</a>
-    <a href="#" class="link-button2">Καλάθι</a>
-    <a href="#" class="link-button3">Παραλαβές</a>
-</div>
-
-<div style="margin-left:15%">
-    <p-table [value]="products" [tableStyle]="{ 'width': '100%' }">
-        <ng-template pTemplate="caption"  >
-            <p-toolbar>
-                <div class="flex align-items-center justify-content-between">
-                    <b>PRODUCTS</b>
-                </div>
-                <div class="p-toolbar-group-start">
-                    <p-button icon="pi pi-plus"></p-button>   
-                </div>
-                <div class="p-toolbar-group-end">
-                    <span class="p-input-icon-left">
-                        <i class="pi pi-search" (click)="search(s.value)"></i>
-                        <input #s type="text" placeholder="Search Product" pInputText (keyup.enter)="search(s.value)" [value]="searchTerm"/>
-                    </span>
-                </div>
-            </p-toolbar>
-        </ng-template>
+    <p-confirmDialog #cd [style]="{width: '20vw'}" [baseZIndex]="10000">
         <ng-template pTemplate="header">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Supplier</th>
-                <th>Weight</th>
-                <th>Quantity</th>
-                <th>Actions</th>
-            </tr>
+            <h3>Delete Product</h3>
         </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.supplier }}</td>
-                <td>{{ product.weight }}</td>
-                <td>{{ product.quantity }}</td>
-                <td>
-                    <p-button  label="ADD TO BAG" styleClass="p-button-outlined" (click)="addToBag(product)"></p-button>
-                    <p-button  icon="pi pi-user-edit" styleClass="p-button-outlined p-button-success"  (click)="editClick(product)" ></p-button>
-                    <p-button  icon="pi pi-trash" styleClass="p-button-outlined p-button-danger"></p-button>
-                </td>
-            </tr>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-times" styleClass="p-button-outlined p-button-secondary" label="No" (click)="cd.reject()"></p-button>
+            <p-button icon="pi pi-check" styleClass="p-button-raised p-button-success" label="Yes" (click)="cd.accept()"></p-button>
         </ng-template>
-    </p-table>
-</div>
+    </p-confirmDialog>
+    <div class="sidenav">
+        <a href="/users-page" class="btn1"><span class="pi pi-users" style="font-size: 30px;"></span> Users</a>
+        <a href="/supplier-page" class="btn2"><span class="pi pi-truck" style="font-size: 30px;"></span> Suppliers</a>
+        <a href="/" class="btn3"><span class="pi pi-box" style="font-size: 30px;"></span> Products</a>
+    </div>
 
+    <div class="content">
+        <div class="title">PRODUCTS</div>
+        <div class="table">
+            <p-table [value]="products" 
+                [tableStyle]="{ 'width': '100%' }"
+                [paginator]="true"
+                [rows]="8"
+                [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                >
+                <ng-template pTemplate="caption">
+                        <div class="flex" style="margin-left: 82%;">
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search" (click)="search(s.value)"></i>
+                                <input #s type="text" placeholder="Search Product" pInputText (keyup.enter)="search(s.value)" [value]="searchTerm"/>
+                            </span>
+                        </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 15%;">ID</th>
+                        <th style="width: 15%;">Name</th>
+                        <th style="width: 10%;">Supplier</th>
+                        <th style="width: 10%;">Weight</th>
+                        <th style="width: 10%;">Quantity</th>
+                        <th style="width: 15%;">Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.supplier }}</td>
+                        <td>{{ product.weight }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>
+                            <p-button  class="btn" label="ADD TO BAG" styleClass="p-button-outlined" (click)="addToBag(product)"></p-button>
+                            <p-button  *ngIf="isAdmin" class="btn" icon="pi pi-user-edit" styleClass="p-button-outlined p-button-success"  (click)="openEditPrForm(product)" ></p-button>
+                            <p-button  *ngIf="isAdmin" class="btn" icon="pi pi-trash" styleClass="p-button-outlined p-button-danger" (click)="confirm(product.id)"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button *ngIf="isAdmin" type="button" icon="pi pi-plus" styleClass="p-button-text" (click)="openAddEditPrForm()"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright"></ng-template>
+            </p-table>
+        </div>
+    </div>
 </div>

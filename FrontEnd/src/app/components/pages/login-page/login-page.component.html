@@ -1,35 +1,42 @@
-
-<div class="grid">
-    <div class="col-5">
-        <form [formGroup]="loginForm" (ngSubmit)="submit()">
-        <div class="p-fluid">
-            <div class="field">
-                <label class="labels">Username</label>
-                <input pInputText type="text" placeholder="Email" formControlName="email"/>
-                <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
-                    <div *ngIf="fc.email.errors.required">Should not be empty</div>
-                    <div *ngIf="fc.email.errors.email">Email is not correct</div>
+<div class="container">
+    <div class="grid">
+        <div class="logo">Apotheke.</div>
+        <div class="col-5">
+            <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <div class="p-fluid">
+                <div class="field">
+                    <label class="labels">Username</label>
+                    <input pInputText type="text" placeholder="Email" formControlName="email"/>
+                    <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
+                        <div *ngIf="fc.email.errors.required">Should not be empty</div>
+                        <div *ngIf="fc.email.errors.email">Email is not correct</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label class="labels">Password</label>
-                <input pInputText type="password" placeholder="Password" formControlName="password"/>
-                <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
-                    <div *ngIf="fc.password.errors.required">Should not be empty</div>
+                <div class="field">
+                    <label class="labels">Password</label>
+                    <input pInputText type="password" placeholder="Password" formControlName="password"/>
+                    <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
+                        <div *ngIf="fc.password.errors.required">Should not be empty</div>
+                    </div>
                 </div>
-            </div>
 
-            <p-button label="Login" type="submit"></p-button>
+                <p-button label="Login" type="submit" icon="pi pi-sign-in" styleClass="p-button-raised p-button-text p-button-help"></p-button>
+            </div>
+        </form>
         </div>
-    </form>
-    </div>
-    <div class="col-2">
-        <p-divider layout="vertical">
-            <b>OR</b>
-        </p-divider>
-    </div>
-    <div class="signup">
-        <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success"></p-button>
+        <div class="col-2">
+            <p-divider layout="vertical">
+            </p-divider>
+            <b class="or">OR</b>
+            <p-divider layout="vertical">
+            </p-divider>
+        </div>
+        <div class="signup">
+            <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-raised p-button-text p-button-success" (click)="registerForm()"></p-button>
+        </div>
+        <div class="reset">
+            <a href="#">Forgot password?</a>
+        </div>
     </div>
 </div>
