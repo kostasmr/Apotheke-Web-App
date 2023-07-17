@@ -4,6 +4,8 @@ import { Bag } from '../shared/models/Bag';
 import { Product } from '../shared/models/Product';
 import { BagItem } from '../shared/models/BagItem';
 import { ProductService } from './product.service';
+import { HttpClient } from '@angular/common/http';
+import { PRODUCTS_URL } from '../shared/constants/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +14,14 @@ export class BagService {
   
   private bag:Bag = this.getBagFromLocalStorage();
   private bagSubject: BehaviorSubject<Bag> = new BehaviorSubject(this.bag);
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+    private http:HttpClient) { }
 
   addTobag(product:Product):void{
     let bagItem = this.bag.items.find(item => item.product.id === product.id);
-    if(bagItem?.product.quantity === 0){
-      return;
+    if(product.quantity === 0){
+      alert("Τhis product is out of stock!");
+      return
     }
     this.productService.changeProductQuantity(product,"addToBag");
     this.bag.totalBagQuantity = this.bag.totalBagQuantity + 1;
@@ -31,8 +35,6 @@ export class BagService {
 
   removeFromBag(productId: string):void{
     this.bag.items = this.bag.items.filter(item => item.product.id != productId);
-    //this.bag.totalBagQuantity = this.bag.totalBagQuantity - this.productService.getProductByid(productId);
-    //this.productService.changeProductQuantity(this.productService.getProductByid(productId),"");
     this.setbagToLocalStorage();
   }
 

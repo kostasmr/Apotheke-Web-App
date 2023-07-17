@@ -101,5 +101,11 @@
     padding-left: 1%;
     padding-top: 1%;
 }
+
+.send_btn{
+  position: relative;
+  float:right;
+  padding-right: 2%;
+}
   
   

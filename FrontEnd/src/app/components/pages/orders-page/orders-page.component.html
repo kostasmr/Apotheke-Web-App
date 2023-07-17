@@ -6,12 +6,12 @@
 </div>
 
 <div class="content">
-    <div class="title">SUPPLIERS</div>
+    <div class="title">ORDERS</div>
     <div class="table">
-        <p-table [value]="suppliers" 
+        <p-table [value]="orders" 
             [tableStyle]="{ 'width': '100%' }"
             [paginator]="true"
-            [rows]="8"
+            [rows]="5"
             [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             >
@@ -26,28 +26,22 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th>No.</th>
-                    <th>Name</th>
-                    <th>Code</th>
+                    <th>User</th>
                     <th>Actions</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-supplier let-i="rowIndex">
+            <ng-template pTemplate="body" let-order let-i="rowIndex">
                 <tr>
                     <td style="width: 10%;">{{ i + 1 }}</td>
-                    <td style="width: 25%;">{{ supplier.name }}</td>
-                    <td style="width: 25%;">{{ supplier.code }}</td>
+                    <td style="width: 60%;">{{ order.user }}</td>
                     <td>
-                        <p-button  class="btn" label="Products" styleClass="p-button-outlined"></p-button>
-                        <p-button  class="btn" *ngIf="isAdmin" icon="pi pi-user-edit" styleClass="p-button-outlined p-button-success"></p-button>
-                        <p-button  class="btn" *ngIf="isAdmin" icon="pi pi-trash" styleClass="p-button-outlined p-button-danger"></p-button>
+                        <p-button  class="btn" label="View Order" styleClass="p-button-outlined" (click)="viewOrder(order)"></p-button>
                     </td>
                 </tr>
-            </ng-template>
-            <ng-template pTemplate="paginatorleft">
-                <p-button *ngIf="isAdmin" type="button" icon="pi pi-plus" styleClass="p-button-text" (click)="openAddEditPrForm()"></p-button>
             </ng-template>
             <ng-template pTemplate="paginatorright"></ng-template>
         </p-table>
     </div>
 </div>
+
 

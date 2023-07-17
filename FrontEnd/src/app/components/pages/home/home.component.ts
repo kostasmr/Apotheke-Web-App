@@ -7,7 +7,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/shared/models/Product';
 import { User } from 'src/app/shared/models/User';
-import { EditPageComponent } from '../edit-page/edit-page.component';
+import { EditPageComponent } from '../../forms/edit-page/edit-page.component';
 import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
 
 
@@ -94,7 +94,7 @@ export class HomeComponent  implements OnInit {
       error: console.log,
     })
     alert("Product deleted!");
-    window.location.reload();
+    window.location.reload(); 
   }
 
   openEditPrForm(data: any){

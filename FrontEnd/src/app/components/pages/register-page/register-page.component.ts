@@ -16,6 +16,7 @@ export class RegisterPageComponent implements OnInit{
 
   user!: User;
   userForm: FormGroup;
+  isSubmitted!: boolean;
 
   constructor(private _fb: FormBuilder, private userService: UserService, private dialogRef: MatDialogRef<RegisterPageComponent>){
     this.userForm = this._fb.group({
@@ -32,16 +33,25 @@ export class RegisterPageComponent implements OnInit{
   hide2=true;
   hide3=true;
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.isSubmitted = false
   }
 
   onFormSubmit(){
+    this.isSubmitted = true;
     if(this.userForm.valid){
       const fv= this.userForm.value;
       console.log(fv.isAdmin);
       let adminUser = false;
       if(fv.isAdmin === '12'){
         adminUser = true;
+      }
+      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      if (!fv.email.match(validRegex)){
+        alert("Invalid email address!")
+        return
+      } else if (fv.password.length <6){
+        alert("Password can not be less than 6 characters!")
+        return
       }
       const user :IUserRegister = {
         name: fv.name,

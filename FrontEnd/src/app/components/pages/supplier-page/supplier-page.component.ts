@@ -23,7 +23,6 @@ export class SupplierPageComponent implements OnInit{
     let supplierObservable: Observable<Supplier[]>;
     activatedRoute.params.subscribe((params) => {
       if(params.searchTerm){
-
         supplierObservable = this.supplierService.getAllSuppliersBySearchTerm(params.searchTerm);
         this.searchTerm = params.searchTerm;
       }
@@ -48,7 +47,6 @@ export class SupplierPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   search(term:string):void{

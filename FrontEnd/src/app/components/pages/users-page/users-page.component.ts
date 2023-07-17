@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
-import { UserFormPageComponent } from '../user-form-page/user-form-page.component';
+import { UserFormPageComponent } from '../../forms/user-form-page/user-form-page.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
 

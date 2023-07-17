@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { sample_suppliers } from '../data';
 import expressAsyncHandler from 'express-async-handler';
 import { SupplierModel } from '../models/supplier.model';
-import auth from '../middlewares/auth'
+import auth from '../middlewares/auth';
 
 const router = Router();
 

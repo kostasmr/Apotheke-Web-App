@@ -5,7 +5,7 @@ export const dbConnect = () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
     } as ConnectOptions).then(
-        () => console.log("connect successfully"),
+        () => console.log("MongoDB connected!"),
         (error) => console.log(error)
     )
 }

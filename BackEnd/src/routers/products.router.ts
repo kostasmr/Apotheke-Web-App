@@ -19,7 +19,7 @@ router.get("/seed", expressAsyncHandler(
 }));
 
 router.get("/", auth, expressAsyncHandler(
-    async (rew,res) => {
+    async (req,res) => {
         const products = await ProductModel.find();
         res.send(products);
     }
@@ -65,6 +65,23 @@ router.put("/:productId", auth, expressAsyncHandler(
             quantity: productDetails.quantity
         },
         {new: true});
+    }
+));
+
+router.put("/", auth, expressAsyncHandler(
+    async(req, res) => {
+        const orderedProduct = req.body;
+        let product = await ProductModel.findOne({name: orderedProduct.name});
+        if(!product){
+            res.status(404).send("Product not found.");
+        } else {
+            const newQuantity = product.quantity - orderedProduct.quantity;
+            product = await ProductModel.findByIdAndUpdate(product.id,
+            {
+                quantity: newQuantity
+            },
+            {new: true});
+        }
     }
 ));
 

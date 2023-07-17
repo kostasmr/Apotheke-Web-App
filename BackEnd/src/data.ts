@@ -56,3 +56,24 @@ export const sample_suppliers: any[] = [
         code: "pb2023",
     },
 ];
+
+export const sample_orders: any[] = [
+    {
+        supplier: "Public",
+        supplier_code: "pb2023",
+        products: [{name: "book",quantity: 3},{name: "computer",quantity: 3}],
+        user: "ko@gmail.com"
+    },
+    {
+        supplier: "Public",
+        supplier_code: "pb2023",
+        products: [{name: "book",quantity: 1},{name: "chair",quantity: 1}],
+        user: "ko@gmail.com"
+    },
+    {
+        supplier: "Public",
+        supplier_code: "pb2023",
+        products: [{name: "chair",quantity: 3},{name: "computer",quantity: 3}],
+        user: "giorgos@gmail.com"
+    },
+];

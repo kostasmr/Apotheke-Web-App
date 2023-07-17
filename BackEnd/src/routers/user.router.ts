@@ -106,9 +106,7 @@ router.post("/register", expressAsyncHandler(
     async(req, res) => {
         const {name, email, password, confirmPassword, isAdmin} = req.body;
         const user = await UserModel.findOne({email});
-        console.log(user)
         if(user){
-            console.log(user)
             res.status(HTTP_BAD_REQUEST).send("User all ready exist!")
         } else{
             const encryptedPassword = await bcrypt.hash(password, 8);

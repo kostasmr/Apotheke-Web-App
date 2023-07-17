@@ -19,4 +19,13 @@ export const SUPPLIER_URL = BASE_URL + '/api/suppliers';
 export const SUPPLIER_BY_ID_URL = SUPPLIER_URL + '/';
 export const SUPPLIER_BY_SEARCH_URL = SUPPLIER_URL + '/searchSupplier/';
 
+export const ORDERS_URL = BASE_URL + '/api/orders';
+export const ORDERS_BY_USER_URL = ORDERS_URL + '/';
+export const ORDER_BY_ID_URL = ORDERS_URL + '/viewOrder/';
+
+export const BAG_PAGE_URL = BASE_URL + '/api/bag';
+
+
+
+
 

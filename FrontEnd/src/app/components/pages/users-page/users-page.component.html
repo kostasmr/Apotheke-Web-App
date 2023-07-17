@@ -9,9 +9,10 @@
 </p-confirmDialog>
 
 <div class="sidenav">
-    <a href="/users-page" class="btn1"><span class="pi pi-users" style="font-size: 30px;"></span> Users</a>
-    <a href="/supplier-page" class="btn2"><span class="pi pi-truck" style="font-size: 30px;"></span> Suppliers</a>
-    <a href="/" class="btn3"><span class="pi pi-box" style="font-size: 30px;"></span> Products</a>
+    <a routerLink="/users-page" class="btn1"><span class="pi pi-users" style="font-size: 30px;"></span> Users</a>
+    <a routerLink="/supplier-page" class="btn2"><span class="pi pi-truck" style="font-size: 30px;"></span> Suppliers</a>
+    <a routerLink="/" class="btn3"><span class="pi pi-box" style="font-size: 30px;"></span> Products</a>
+    <a routerLink="/orders-page" class="btn4"><span class="pi pi-list" style="font-size: 30px;"></span> Orders</a>
 </div>
 
 <div class="content">
@@ -27,7 +28,7 @@
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             >
             <ng-template pTemplate="caption"  >
-                <div class="flex" style="margin-left: 82%;">
+                <div class="flex" style="position: relative;margin-left: 72%;">
                     <span class="p-input-icon-left">
                         <i class="pi pi-search" (click)="search(s.value)"></i>
                         <input #s type="text" placeholder="Search User" pInputText (keyup.enter)="search(s.value)" [value]="searchTerm"/>
@@ -36,16 +37,16 @@
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 15%;">ID</th>
+                    <th style="width: 10%;">No.</th>
                     <th style="width: 15%;">Name</th>
                     <th style="width: 15%;">Email</th>
                     <th style="width: 15%;">Admin</th>
                     <th style="width: 15%;" *ngIf="isAdmin">Actions</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-user>
+            <ng-template pTemplate="body" let-user let-i="rowIndex">
                 <tr>
-                    <td style="height: 60px;">{{ user.id }}</td>
+                    <td>{{ i + 1 }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.isAdmin }}</td>

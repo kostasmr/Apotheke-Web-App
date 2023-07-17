@@ -13,13 +13,33 @@ export interface User{
 }
 
 export const UserSchema = new Schema<User>({
-    name: {type: String, required:true },
-    password: {type: String, required:true },
-    email: {type: String, required:true, unique: true},
-    isAdmin: {type: Boolean, required:true },
-    token: { type: String, require: false},
-    tokens: { id:{type:String , required: false},
-        token:{type: String, required: false}}
+    name: {
+        type: String, 
+        required: [true, "Please add a name"],
+        maxlength: [50, "Name can not be more than 50 characters"]
+    },
+    password: {
+        type: String, 
+        required:true,
+        minlength: [6, "Password can not be less than 6 characters"] 
+    },
+    email: {
+        type: String, 
+        required:true, 
+        unique: true
+    },
+    isAdmin: {
+        type: Boolean, 
+        required:true 
+    },
+    token: { 
+        type: String, 
+        require: false
+    },
+    tokens: { 
+        id:{type:String , required: false},
+        token:{type: String, required: false}
+    }
 },{
     timestamps: true,
     toJSON:{
@@ -29,6 +49,5 @@ export const UserSchema = new Schema<User>({
         virtuals: true
     }
 });
-
 
 export const UserModel = model<User>('user', UserSchema);

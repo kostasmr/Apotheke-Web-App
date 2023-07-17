@@ -6,6 +6,7 @@ dotenv.config();
 import productRouter from './routers/products.router';
 import userRouter from './routers/user.router';
 import supplierRouter from './routers/supplier.router';
+import orderRouter from './routers/orders.router';
 import { dbConnect } from "./configs/database.config";
 dbConnect();
 
@@ -27,6 +28,7 @@ app.use(cors({
 app.use("/api/products", productRouter);
 app.use("/api/users", userRouter);
 app.use("/api/suppliers", supplierRouter);
+app.use("/api/orders", orderRouter);
 
 const port = 8080;
 app.listen(port, () => {

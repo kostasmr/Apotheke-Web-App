@@ -1,3 +1,5 @@
+import { Order } from "./Order";
+
 export class User{
     id!:string;
     email!:string;

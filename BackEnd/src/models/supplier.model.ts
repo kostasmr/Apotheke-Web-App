@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { Product } from './product.model';
 
+
 export interface Supplier{
     id:string;
     name:string;

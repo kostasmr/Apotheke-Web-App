@@ -46,6 +46,10 @@ export class ProductService {
     return this.http.post(PRODUCT_EDIT_PAGE_URL, product);
   }
 
+  updateProductQuantity(product: any){
+    return this.http.put(PRODUCTS_URL, product);
+  }
+
   editProduct(id: any ,data: any): Observable<any> {
     return this.http.put(`http://localhost:8080/api/products/${id}`, data);
   }
